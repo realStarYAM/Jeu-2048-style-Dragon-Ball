@@ -281,6 +281,13 @@ button:active {
   margin: 0;
 }
 
+.overlay-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .hint {
   margin-top: 8px;
   opacity: 0.75;

@@ -12,6 +12,8 @@ const state = {
   board: createEmptyBoard(size),
   score: 0,
   best: 0,
+  over: false,
+  awaitingContinue: false,
 };
 
 const gridContainer = document.querySelector(".grid-container");
@@ -21,6 +23,7 @@ const bestEl = document.querySelector("#best-value");
 const overlayWin = document.querySelector(".overlay.win");
 const overlayLose = document.querySelector(".overlay.lose");
 const restartButtons = document.querySelectorAll(".restart-btn");
+const continueBtn = document.querySelector(".continue-btn");
 
 function loadBestScore() {
   try {
@@ -42,6 +45,8 @@ function saveBestScore() {
 function resetOverlays() {
   overlayWin?.classList.remove("visible");
   overlayLose?.classList.remove("visible");
+  state.over = false;
+  state.awaitingContinue = false;
 }
 
 function updateScores(delta = 0) {
@@ -111,15 +116,18 @@ function initBoard() {
 
 function checkEndStates() {
   const maxTile = getMaxTile(state.board);
-  if (maxTile >= 2048) {
+  if (maxTile >= 2048 && !state.awaitingContinue) {
+    state.awaitingContinue = true;
     overlayWin?.classList.add("visible");
   }
   if (!hasMovesAvailable(state.board)) {
+    state.over = true;
     overlayLose?.classList.add("visible");
   }
 }
 
 function handleMove(direction) {
+  if (state.over || state.awaitingContinue) return;
   const { board: movedBoard, moved, delta } = moveBoard(state.board, direction);
   if (!moved) return;
   updateScores(delta);
@@ -132,6 +140,10 @@ function handleMove(direction) {
 function setup() {
   renderGridBackground();
   restartButtons.forEach((btn) => btn.addEventListener("click", initBoard));
+  continueBtn?.addEventListener("click", () => {
+    state.awaitingContinue = false;
+    overlayWin?.classList.remove("visible");
+  });
   setupInputHandlers(handleMove, initBoard);
   initBoard();
 }
