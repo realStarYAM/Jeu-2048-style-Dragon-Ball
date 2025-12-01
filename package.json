@@ -1,0 +1,12 @@
+{
+  "name": "jeu-2048-style-dragon-ball",
+  "version": "1.0.0",
+  "description": "Jeu 2048 thème Dragon Ball en HTML5/CSS/JS.",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/gameLogic.test.js"
+  },
+  "keywords": ["2048", "dragon-ball", "puzzle", "browser"],
+  "author": "",
+  "license": "MIT"
+}
