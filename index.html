@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2048 Dragon Ball - Ki Fusion</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <div class="panel">
+        <header>
+          <h1>2048 · Ki Fusion</h1>
+          <p>Glisse les orbes pour fusionner la puissance des Dragon Balls.</p>
+        </header>
+        <div class="scores">
+          <div class="score-box">
+            <div class="label">Score</div>
+            <div class="value" id="score-value">0</div>
+          </div>
+          <div class="score-box">
+            <div class="label">Meilleur</div>
+            <div class="value" id="best-value">0</div>
+          </div>
+          <div class="controls">
+            <button class="restart-btn" type="button">Rejouer</button>
+          </div>
+        </div>
+        <div class="hint">
+          <strong>Clavier :</strong> flèches ou WASD · <strong>Mobile :</strong> glisse dans une direction · R pour recommencer.
+        </div>
+        <div class="grid-wrapper">
+          <div class="grid-container">
+            <div class="tiles"></div>
+            <div class="overlay win">
+              <h2>Victoire !</h2>
+              <p>Tu as rassemblé assez d'énergie. Continue ou relance une partie.</p>
+              <button class="restart-btn" type="button">Rejouer</button>
+            </div>
+            <div class="overlay lose">
+              <h2>Game Over</h2>
+              <p>Plus de mouvements disponibles. Essaie encore !</p>
+              <button class="restart-btn" type="button">Rejouer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Atmosphère Dragon Ball</h3>
+        <p>
+          Chaque tuile représente une orbe de ki. Les valeurs montent comme une montée de puissance :
+          les orbes les plus faibles brillent doucement, les puissantes deviennent des boules aux étoiles dorées.
+        </p>
+        <p>
+          Atteins la tuile 2048 pour invoquer la légende ! Pas de ressources externes : uniquement CSS, 
+          dégradés et caractères étoilés pour rester dans l'esprit tout en respectant la licence.
+        </p>
+        <p class="footer">
+          Inspiré par le Maghreb & StarYAM vibes · Contrôles réactifs · Fonctionne hors connexion réseau.
+        </p>
+      </div>
+    </main>
+
+    <script type="module" src="ui.js"></script>
+  </body>
+</html>
